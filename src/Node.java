@@ -3,8 +3,8 @@ import java.util.List;
 
 public class Node {
 	
-	private String name;
-	private List<Path> paths;
+	protected String name;
+	protected List<Path> paths;
 	
 	public Node(String name) {
 		this.name = name;
