@@ -22,10 +22,12 @@ public class GraphGenerator {
 				if (!graph.contains(to)) {
 					graph.add(new Node(to));
 				}
-				Path path = new Path(to);
+				String distance = (int)Math.floor((Math.random()*10 + 1)) + "";
+				String time = (int)Math.floor((Math.random()*10 + 1)) + "";
+				Path path = new Path(distance, time, to);
 				if (!node.hasPathTo(path.getTo())) {
 					node.addPath(path);
-					graph.node(to).addPath(new Path(node.getName()));
+					graph.node(to).addPath(new Path(distance, time, node.getName()));
 				}
 			}
 		}

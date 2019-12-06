@@ -12,7 +12,6 @@ public class BruteForce {
 	private String mTo;
 	private MyGraph mGraph;
 	private boolean needToRun = true;
-	public long interactions = 0;
 	
 	public BruteForce(String from, String to, MyGraph graph) {
 		this.mFrom = from;
@@ -104,30 +103,29 @@ public class BruteForce {
 		return findFirst(mFrom,mTo,mFrom,0,0);
 	}
 	
-	private Result findFirst (String from, String to, String semiResult, int semiDistane, int semiTime) {
+	private Result findFirst (String from, String to, String semiResult, int semiDistance, int semiTime) {
 		for (Path path : mGraph.node(from).getPaths().getPaths()) {
 			if (path.getTo().equals(to)) {
-				return new Result(semiResult + "-" + path.getTo(),semiDistane + path.getDistance(),semiTime + path.getTime());
+				return new Result(semiResult + "-" + path.getTo(),semiDistance + path.getDistance(),semiTime + path.getTime());
 			}
 			if (semiResult.contains(path.getTo())) {
 				continue;
 			}
-			return findFirst(path.getTo(), to,  semiResult + "-" + path.getTo(),semiDistane + path.getDistance(),semiTime + path.getTime());
+			return findFirst(path.getTo(), to,  semiResult + "-" + path.getTo(),semiDistance + path.getDistance(),semiTime + path.getTime());
 		}
 		return null;
 	}
 	
-	private void calc (String from, String to, String semiResult, int semiDistane, int semiTime) {
+	private void calc (String from, String to, String semiResult, int semiDistance, int semiTime) {
 		for (Path path : mGraph.node(from).getPaths().getPaths()) {
-			interactions++;
 			if (path.getTo().equals(to)) {
-				mResuts.add(new Result(semiResult + "-" + path.getTo(),semiDistane + path.getDistance(),semiTime + path.getTime()));
+				mResuts.add(new Result(semiResult + "-" + path.getTo(),semiDistance + path.getDistance(),semiTime + path.getTime()));
 				continue;
 			}
 			if (semiResult.contains(path.getTo())) {
 				continue;
 			}
-			calc(path.getTo(), to,  semiResult + "-" + path.getTo(),semiDistane + path.getDistance(),semiTime + path.getTime());
+			calc(path.getTo(), to,  semiResult + "-" + path.getTo(),semiDistance + path.getDistance(),semiTime + path.getTime());
 		}
 	}
 }

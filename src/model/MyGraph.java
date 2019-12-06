@@ -1,17 +1,7 @@
 package model;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.StringWriter;
-import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.jgrapht.Graph;
-import org.jgrapht.graph.DefaultDirectedGraph;
-import org.jgrapht.graph.DefaultEdge;
-import org.jgrapht.io.DOTExporter;
-import org.jgrapht.io.ExportException;
-import org.jgrapht.io.GraphExporter;
 
 public class MyGraph {
 	
@@ -57,9 +47,8 @@ public class MyGraph {
 		
 	}
 	
-	public void drawGraph() {
+	public String drawGraph() {
 		StringBuffer graphViz = new StringBuffer();
-		graphViz.append("copy line below to: https://dreampuf.github.io/GraphvizOnline\n");
 		graphViz.append("strict digraph G {");
 		for (Node node : graph) {
 			graphViz.append(node.getName()+";");
@@ -79,6 +68,7 @@ public class MyGraph {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return graphViz.toString();
 	}
 	
 	private String[][] createMatrix(){

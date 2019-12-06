@@ -2,7 +2,6 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -14,12 +13,9 @@ public class GraphReader {
 	
 	public static final String GRAPH_0 = "/res/graph0.txt";
 
-	private MyGraph graph;
+	private static MyGraph graph;
 
-	public GraphReader() {
-	}
-
-	public MyGraph read(String filePath) {
+	public static MyGraph read(String filePath) {
 		graph = new MyGraph();
 		for (String line : readLines(filePath)) {
 			parseLine(line);
@@ -27,7 +23,7 @@ public class GraphReader {
 		return graph;
 	}
 
-	private void parseLine(String line) {
+	private static void parseLine(String line) {
 		String[] values = line.split(";");
 		boolean node1PathAdded = false;
 		boolean node2PathAdded = false;
@@ -55,7 +51,7 @@ public class GraphReader {
 
 	}
 
-	private List<String> readLines(String filePath) {
+	private static List<String> readLines(String filePath) {
 		try {
 			return Files.readAllLines(Paths.get(System.getProperty("user.dir") + filePath), StandardCharsets.UTF_8);
 		} catch (IOException e) {
