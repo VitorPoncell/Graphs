@@ -11,6 +11,7 @@ public class Main {
 		int mode;
 		
 		do {
+			System.out.println("\n0 executar Test.java | 1 executar grafo do arquivo | 2 executar com grafo randomico");
 			mode = scanner.nextInt();
 			
 			switch (mode) {
@@ -25,27 +26,6 @@ public class Main {
 				break;					
 			}
 		} while (0 <= mode && mode <=2);
-//		GraphReader graphReader = new GraphReader();
-////		
-//		MyGraph graph = GraphGenerator.generate(10);
-//		graph.printMatrix();
-//		graph.drawGraph();
-//		
-//		
-//		BruteForce bruteForce = new BruteForce("1", "8", graph);
-//		System.out.println(bruteForce.toMaxJumps(3));
-//		
-//		System.out.println(calculateRoute.lowerDistance());
-//		System.out.println(calculateRoute.lowerTime());
-//		System.out.println(calculateRoute.lowerJumps());
-		/*
-		System.out.println(calculateRoute.findFirst());
-		
-		for (Result result : calculateRoute.maxDistance(1)) {
-			System.out.println(result);
-		}
-		*/
-
 		
 	}
 	
@@ -56,7 +36,7 @@ public class Main {
 	}
 	
 	private static void randonGraph() {
-		MyGraph graph = GraphGenerator.generate(10);
+		MyGraph graph = GraphGenerator.generate(15);
 		BruteForce bruteForce = new BruteForce("1", "8", graph);
 		showResults(graph, bruteForce);
 	}
